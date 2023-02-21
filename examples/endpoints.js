@@ -31,6 +31,13 @@ function makeEndpoints(app, HLTV) {
     res.json(players)
   })
 
+  app.get('/players/:dateStart/:dateEnd', async (req, res) => {
+    const startDate = req.params.dateStart
+    const endDate = req.params.dateEnd
+    const players = await HLTV.getTopPlayersByDate(startDate, endDate)
+    res.json(players)
+  })
+
   app.get('/players/:playerId', async (req, res) => {
     const { playerId } = req.params
     const player = await HLTV.getPlayerById(playerId)

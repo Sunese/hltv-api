@@ -12,10 +12,11 @@ interface IPlayer {
   rating: number
 }
 
-export async function getTopPlayers(): Promise<IPlayer[]> {
-  const url = `${CONFIG.BASE}/${CONFIG.PLAYERS}`
+export async function getTopPlayersByDate(startDate: string, endDate: string): Promise<IPlayer[]> {
+  // date format: YYYY-MM-DD
+  const url = `${CONFIG.BASE}/${CONFIG.PLAYERS}?startDate=${startDate}&endDate=${endDate}`
 
-  console.log('insde getTopPlayers()')
+  console.log('insde getTopPlayersByDate()')
   console.log('url: ', url)
 
   try {
